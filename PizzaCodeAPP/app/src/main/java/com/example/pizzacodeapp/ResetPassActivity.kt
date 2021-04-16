@@ -42,11 +42,11 @@ class ResetPassActivity : AppCompatActivity(), View.OnClickListener {
             editTextEmail!!.requestFocus()
             return
         }
-        progressBar!!.visibility = View.VISIBLE
+        progressBar?.visibility = View.VISIBLE
         FirebaseAuth.getInstance().sendPasswordResetEmail(mEmail).addOnCompleteListener(OnCompleteListener { task ->
             if (task.isSuccessful) {
                 editTextEmail!!.setText("")
-                progressBar!!.visibility = View.GONE
+                progressBar?.visibility = View.GONE
                 Toast.makeText(this@ResetPassActivity, "Password reset link sent to your email. Please check your email inbox.", Toast.LENGTH_SHORT).show()
             } else {
                 progressBar!!.visibility = View.GONE

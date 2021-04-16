@@ -154,9 +154,9 @@ class LoginActivity : AppCompatActivity() {
             editTextPassword!!.requestFocus()
             return
         }
-        progressBar!!.visibility = View.VISIBLE
+        progressBar?.visibility = View.VISIBLE
         mAuth!!.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-            progressBar!!.visibility = View.GONE
+            progressBar?.visibility = View.GONE
             if (task.isSuccessful) {
                 if (mAuth!!.currentUser.isEmailVerified) {
                     finish()

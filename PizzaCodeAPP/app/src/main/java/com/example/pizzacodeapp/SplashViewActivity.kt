@@ -12,7 +12,7 @@ class SplashViewActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         Thread{
-            SystemClock.sleep(3000)
+            SystemClock.sleep(1500)
             val intent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(intent)
             finish()

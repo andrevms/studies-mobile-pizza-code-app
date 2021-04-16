@@ -119,13 +119,14 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             editTextPassword!!.requestFocus()
             return
         }
+
         concluir_registro(email, password)
     }
 
     private fun concluir_registro(email: String?, password: String) {
-        progressBar!!.visibility = View.VISIBLE
+        progressBar?.visibility = View.VISIBLE
         mAuth!!.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-            progressBar!!.visibility = View.GONE
+            progressBar?.visibility = View.GONE
             if (task.isSuccessful) {
                 if (password !== "googleauth") {
                     sendEmailVerification()
