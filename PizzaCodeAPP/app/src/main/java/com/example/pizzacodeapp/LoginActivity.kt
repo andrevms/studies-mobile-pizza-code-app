@@ -34,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressbar)
         mAuth = FirebaseAuth.getInstance()
         supportActionBar?.hide()
+
         findViewById<View>(R.id.textViewSignup)?.setOnClickListener(View.OnClickListener {
             val intentSignup = Intent(this, SignUpActivity::class.java)
             intentSignup.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -41,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         })
 
-        findViewById<View>(R.id.buttonLogin)?.setOnClickListener(View.OnClickListener {
+        findViewById<View>(R.id.buttonSignUp)?.setOnClickListener(View.OnClickListener {
             userLogin()
         })
 
