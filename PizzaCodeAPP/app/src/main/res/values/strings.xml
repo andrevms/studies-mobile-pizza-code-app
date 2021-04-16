@@ -2,8 +2,13 @@
     <string name="app_name">Pizza Code APP</string>
     <string name="hint_input_login">Username</string>
     <string name="hint_input_password">Password</string>
-    <string name="button">Button</string>
+    <string name="button">Login</string>
     <string name="forgotPassword">Forgot Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="pizza_code_logo">Pizza Code Logo</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="email">Email</string>
+    <string name="create">Create</string>
+    <string name="HasAccount">Log In to Existing Account</string>
+    <string name="create_account">Create Account</string>
 </resources>

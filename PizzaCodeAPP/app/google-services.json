@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "503746197044",
+    "firebase_url": "https://pizza-code-app-default-rtdb.firebaseio.com",
+    "project_id": "pizza-code-app",
+    "storage_bucket": "pizza-code-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503746197044:android:d7c50da043931a00fd3c61",
+        "android_client_info": {
+          "package_name": "com.example.pizzacodeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503746197044-g2ajmv8mi5ph6qd33r9f35cr6ktcddik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHk1OqMYxD8_da51-mRrt6SAE0lG7Jrm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503746197044-g2ajmv8mi5ph6qd33r9f35cr6ktcddik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
