@@ -13,4 +13,6 @@
     <string name="create_account">Create Account</string>
     <string name="back">Back</string>
     <string name="reset">Reset</string>
+    <string name="compras">compras</string>
+    <string name="item">Item</string>
 </resources>
