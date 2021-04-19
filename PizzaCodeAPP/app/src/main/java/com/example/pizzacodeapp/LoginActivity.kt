@@ -13,9 +13,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.*
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -89,12 +91,19 @@ class LoginActivity : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(acct!!.idToken, null)
         mAuth!!.signInWithCredential(credential)
             .addOnCompleteListener(
-                this
+                    this
             ) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val user = mAuth!!.currentUser
-                    updateUI(user)
+                    if(mAuth!!.currentUser.email == "andrevmsoares@gmail.com"){
+                        val intent = Intent(this@LoginActivity, MainAdminActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
+                    }else {
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
+                    }
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(this@LoginActivity, "Erro na autenticação!", Toast.LENGTH_LONG)
@@ -111,9 +120,24 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         } else {
             Toast.makeText(
-                this@LoginActivity,
-                "Ocorreu algum erro na tentativa de login.",
-                Toast.LENGTH_LONG
+                    this@LoginActivity,
+                    "Ocorreu algum erro na tentativa de login.",
+                    Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private fun updateUIadmim(account: FirebaseUser?) {
+        if (account != null) {
+            finish()
+            val intent = Intent(this@LoginActivity, MainAdminActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        } else {
+            Toast.makeText(
+                    this@LoginActivity,
+                    "Ocorreu algum erro na tentativa de login.",
+                    Toast.LENGTH_LONG
             ).show()
         }
     }
@@ -160,15 +184,21 @@ class LoginActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 if (mAuth!!.currentUser.isEmailVerified) {
                     finish()
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    startActivity(intent)
+                    if(mAuth!!.currentUser.email  == "andrevmsoares@gmail.com"){
+                        val intent = Intent(this@LoginActivity, MainAdminActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
+                    }else {
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
+                    }
                 } else {
                     editTextPassword!!.setText("")
                     Toast.makeText(
-                        this@LoginActivity,
-                        "Verifique seu email para login",
-                        Toast.LENGTH_LONG
+                            this@LoginActivity,
+                            "Verifique seu email para login",
+                            Toast.LENGTH_LONG
                     ).show()
                     FirebaseAuth.getInstance().signOut()
                 }
@@ -182,9 +212,15 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (mAuth!!.currentUser != null) {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            if(mAuth!!.currentUser.email  == "andrevmsoares@gmail.com"){
+                val intent = Intent(this@LoginActivity, MainAdminActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }else {
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
         }
     }
-
 }
