@@ -23,9 +23,11 @@ class ItensProductsAdapter (
             parent,false)
 
 
-        row.findViewById(R.id.item_photo)
-        row.findViewById(R.id.item_name)
-        row.findViewById(R.id.item_description)
-        row.findViewById(R.id.item_price)
+        //row.findViewById(R.id.item_photo)
+        //row.findViewById(R.id.item_name)
+        //row.findViewById(R.id.item_description)
+        //row.findViewById(R.id.item_price)
+
+        return row
     }
 }

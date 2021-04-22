@@ -2,14 +2,17 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+
     <item
-        android:id="@+id/sacola"
-        android:icon="@drawable/ic_sacolas_de_compras"
-        android:title="@string/compras"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/add_new_product"
+        android:title="Add New Product"/>
+    <item
+        android:id="@+id/see_stock"
+        android:title="@string/see_stock"/>
     <item
         android:id="@+id/logoutButton"
         android:icon="@drawable/ic_logout"
-        android:title="@string/log_out"
+        android:title="@string/item"
         app:showAsAction="ifRoom" />
 </menu>

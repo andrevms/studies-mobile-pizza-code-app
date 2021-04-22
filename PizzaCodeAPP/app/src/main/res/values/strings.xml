@@ -15,4 +15,8 @@
     <string name="reset">Reset</string>
     <string name="compras">compras</string>
     <string name="item">Item</string>
+    <string name="log_out">Log Out</string>
+    <string name="see_stock">See Stock</string>
+    <string name="remove_product">Remove Product</string>
+    <string name="add_product">Add Product</string>
 </resources>
