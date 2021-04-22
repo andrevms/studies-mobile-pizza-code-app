@@ -19,4 +19,5 @@
     <string name="see_stock">See Stock</string>
     <string name="remove_product">Remove Product</string>
     <string name="add_product">Add Product</string>
+    <string name="name">Name</string>
 </resources>
