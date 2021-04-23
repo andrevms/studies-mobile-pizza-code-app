@@ -20,4 +20,9 @@
     <string name="remove_product">Remove Product</string>
     <string name="add_product">Add Product</string>
     <string name="name">Name</string>
+    <string name="adding_product">ADDING PRODUCT</string>
+    <string name="n_in_stock">nº in Stock</string>
+    <string name="price">price</string>
+    <string name="description">Description</string>
+    <string name="product_name">Product Name</string>
 </resources>

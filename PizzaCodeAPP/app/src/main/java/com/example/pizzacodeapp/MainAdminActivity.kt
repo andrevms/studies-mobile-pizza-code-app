@@ -18,9 +18,10 @@ class MainAdminActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.actions, menu)
+        menuInflater.inflate(R.menu.actions_admin, menu)
         return true
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
@@ -31,7 +32,9 @@ class MainAdminActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }else if(id == R.id.add_new_product){
-            //TODO
+            val intent = Intent(applicationContext, AddProductsAdmin::class.java)
+            startActivity(intent)
+            finish()
         }else if(id == R.id.see_stock){
             //TODO
         }

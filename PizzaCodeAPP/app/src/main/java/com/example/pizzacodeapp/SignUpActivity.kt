@@ -23,6 +23,9 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     var progressBar: ProgressBar? = null
     var editTextEmail: EditText? = null
     var editTextPassword: TextInputEditText? = null
+    var editTextPhone: TextInputEditText? = null
+    var editTextName: TextInputEditText? = null
+    var editTextEndereco: TextInputEditText? = null
     private var mAuth: FirebaseAuth? = null
     private val RC_GOOGLE_SIGNIN = 9
 
@@ -31,6 +34,9 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_sign_up)
         editTextEmail = findViewById<View>(R.id.editTextEmail) as EditText
         editTextPassword = findViewById<View>(R.id.editTextPassword) as TextInputEditText
+        editTextPhone = findViewById<View>(R.id.editTextPhone) as TextInputEditText
+        editTextEndereco = findViewById<View>(R.id.editTextEndereco) as TextInputEditText
+        editTextName = findViewById<View>(R.id.editTextName) as TextInputEditText
         progressBar = findViewById(R.id.progressbar)
         mAuth = FirebaseAuth.getInstance()
         findViewById<View>(R.id.buttonSignUp).setOnClickListener(this)
@@ -99,6 +105,25 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     private fun registerUser() {
         val email = editTextEmail!!.text.toString().trim { it <= ' ' }
         val password = editTextPassword!!.text.toString().trim { it <= ' ' }
+        val phone = editTextPassword!!.text.toString().trim { it <= ' ' }
+        val name = editTextPassword!!.text.toString().trim { it <= ' ' }
+        val endereco = editTextPassword!!.text.toString().trim { it <= ' ' }
+
+        if (name.isEmpty()) {
+            editTextName!!.error = "Nome é necessário"
+            editTextName!!.requestFocus()
+            return
+        }
+        if (endereco.isEmpty()) {
+            editTextEndereco!!.error = "Endereço é necessário"
+            editTextEndereco!!.requestFocus()
+            return
+        }
+        if (phone.isEmpty()) {
+            editTextPhone!!.error = "Número de telefone é necessário"
+            editTextPhone!!.requestFocus()
+            return
+        }
         if (email.isEmpty()) {
             editTextEmail!!.error = "Email é necessário"
             editTextEmail!!.requestFocus()
@@ -129,28 +154,42 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             progressBar?.visibility = View.GONE
             if (task.isSuccessful) {
                 if (password !== "googleauth") {
-                    sendEmailVerification()
+                    val phone = editTextPassword!!.text.toString().trim { it <= ' ' }
+                    val name = editTextPassword!!.text.toString().trim { it <= ' ' }
+                    val endereco = editTextPassword!!.text.toString().trim { it <= ' ' }
+                    sendEmailVerification(phone,name,endereco)
                 }
             } else {
                 if (task.exception is FirebaseAuthUserCollisionException) {
                     editTextPassword!!.setText("")
+                    editTextName!!.setText("")
+                    editTextEndereco!!.setText("")
+                    editTextPhone!!.setText("")
                     Toast.makeText(applicationContext, "Você já está registrado(a)!", Toast.LENGTH_SHORT).show()
                 } else {
                     editTextPassword!!.setText("")
+                    editTextName!!.setText("")
+                    editTextEndereco!!.setText("")
+                    editTextPhone!!.setText("")
                     Toast.makeText(this@SignUpActivity, task.exception!!.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun sendEmailVerification() {
+    private fun sendEmailVerification(phone: String, name: String, endereco: String) {
         val user = FirebaseAuth.getInstance().currentUser
         user?.sendEmailVerification()?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(this@SignUpActivity, "Valide seu cadastro através do link enviado pro seu email.", Toast.LENGTH_LONG).show()
+                //TODO não está sendo feito nada com o Nome, endereço e celular --> mandar para o banco
+
                 FirebaseAuth.getInstance().signOut()
                 editTextEmail!!.setText("")
                 editTextPassword!!.setText("")
+                editTextName!!.setText("")
+                editTextEndereco!!.setText("")
+                editTextPhone!!.setText("")
             } else {
                 Toast.makeText(this@SignUpActivity, task.exception!!.message, Toast.LENGTH_SHORT).show()
             }
