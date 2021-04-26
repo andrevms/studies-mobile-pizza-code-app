@@ -4,5 +4,6 @@ data class ItensProducts(
         var nameItem: String,
         var description: String,
         var price: Double,
-        var nStock: Int
+        var nStock: Int,
+        var tipoProducts: String
 )
