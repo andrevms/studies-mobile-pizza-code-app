@@ -10,11 +10,11 @@ Projeto de conclusão da disciplina de desenvolvimento para dispositivos moveis
 
   - Cliente;
 
-- O produto cadastrado possuirá um nome, imagem, descrição, tipo, quantidade no estoque,
-preços, número do lote e validade;
-- O gerente deve possuir permissão para cadastrar, visualizar, editar e remover produtos.
+- O produto cadastrado possuirá um nome, ~~imagem~~, descrição, tipo, quantidade no estoque,
+preços, ~~número do lote e validade~~; :heavy_check_mark:
+- O gerente deve possuir permissão para cadastrar :heavy_check_mark:, visualizar, editar e remover produtos.
 - Deve haver a funcionalidade de cadastrar cliente, inserindo os dados: nome completo,
-email, telefone, endereço, username e uma senha;
+email, telefone, endereço, ~~username~~ e uma senha; :heavy_check_mark:
 - O cliente deve possuir permissão para realizar a compra apenas dos produtos que já estão
 cadastrados no aplicativo e se encontram em estoque;
 - Deve ser permitido ao cliente visualizar as características (nome do produto e imagem),
