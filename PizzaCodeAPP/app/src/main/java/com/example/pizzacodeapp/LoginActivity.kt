@@ -209,18 +209,4 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        if (mAuth!!.currentUser != null) {
-            if(mAuth!!.currentUser.email  == "andrevmsoares@gmail.com"){
-                val intent = Intent(this@LoginActivity, MainAdminActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-            }else {
-                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-            }
-        }
-    }
 }

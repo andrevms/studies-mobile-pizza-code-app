@@ -7,12 +7,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pizzacodeapp.ItensProductsAdapter.*
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.coroutines.awaitAll
 
 
 class MainAdminActivity : AppCompatActivity() {
@@ -21,8 +23,9 @@ class MainAdminActivity : AppCompatActivity() {
     private var ref: DatabaseReference = FirebaseDatabase.getInstance().getReference()
     private var recyclerVH : RecyclerView? = null
     private var productsSize : Int = 0
+    private var adapter : ItensProductsAdapter? = null
 
-    private var products = mutableListOf<ItensProducts>()
+    private var products = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +36,12 @@ class MainAdminActivity : AppCompatActivity() {
         ref.child("products")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        Log.v("I", "Entrando OnDataChange")
                         productsSize = dataSnapshot.childrenCount.toInt()
-                        Log.v("I", "Pegando o ChidrenCount ${productsSize}")
+                        var i = 0
+                        for (node1 in dataSnapshot.children) {
+                            products.add(i, node1.child("nameItem").value.toString())
+                            i++
+                        }
                         initRecyclerView()
                     }
                     override fun onCancelled(databaseError: DatabaseError) {}
@@ -45,16 +51,35 @@ class MainAdminActivity : AppCompatActivity() {
 
 
     private fun initRecyclerView() {
-       recyclerVH?.adapter = ItensProductsAdapter(products, ref, productsSize)
-       val layoutManager = LinearLayoutManager(this)
+        adapter = ItensProductsAdapter(products, ref, productsSize)
+        recyclerVH?.adapter = adapter
+        val layoutManager = LinearLayoutManager(this)
 
         recyclerVH?.layoutManager = layoutManager
 
+        initSwipeDelete()
+
     }
 
-    fun loadSizeProducts() {
+    fun initSwipeDelete(){
 
+        val swipe = object : ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ){
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean = false
 
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+
+                //Remove Data
+                ref.child("products").child(products[position]).removeValue()
+                products.removeAt(position)
+                adapter?.notifyItemRemoved(position)
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipe)
+        itemTouchHelper.attachToRecyclerView(recyclerVH)
     }
 
 

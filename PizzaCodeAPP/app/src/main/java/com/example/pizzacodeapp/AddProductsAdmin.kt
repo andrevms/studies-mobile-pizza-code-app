@@ -21,7 +21,6 @@ class AddProductsAdmin : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_products_admin)
-        supportActionBar?.hide()
 
         editTextAddProductName = findViewById(R.id.add_product_name) as TextInputEditText
         editTextAddProductDescription = findViewById(R.id.add_product_description) as TextInputEditText
@@ -96,6 +95,5 @@ class AddProductsAdmin : AppCompatActivity(), View.OnClickListener {
 
         Toast.makeText(this, "Produto Adicionado", Toast.LENGTH_LONG).show()
     }
-
 
 }

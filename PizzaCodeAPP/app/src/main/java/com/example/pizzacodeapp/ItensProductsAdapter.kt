@@ -14,15 +14,16 @@ import com.google.firebase.database.ValueEventListener
 
 
 class ItensProductsAdapter(
-        private val produtos: List<ItensProducts>,
+        private val produtos: List<String>,
         private val reference: DatabaseReference?,
         private val productsSize: Int
 ): RecyclerView.Adapter<ItensProductsAdapter.VH>(){
 
     class VH(itemView: View): RecyclerView.ViewHolder(itemView){
         val txtName: TextView? = itemView.findViewById(R.id.txtTitle)
-        //val txtDescription: TextView = itemView.findViewById(R.id.item_description)
-        //val txtPrice: TextView = itemView.findViewById(R.id.item_price)
+        val txtDescription: TextView = itemView.findViewById(R.id.txtText)
+        val txtPrice: TextView = itemView.findViewById(R.id.txtPrice)
+        val txtTipo: TextView = itemView.findViewById(R.id.tilCod)
 
     }
 
@@ -31,7 +32,10 @@ class ItensProductsAdapter(
         val vh = VH(v)
 
         vh.itemView.setOnClickListener{
-            val produto = produtos[vh.adapterPosition]
+            Log.v("I", "${vh.adapterPosition}")
+            Log.v("I", "${produtos}")
+
+            //val produto = produtos[vh.adapterPosition]
             //callback(produto)
         }
         return vh
@@ -48,6 +52,9 @@ class ItensProductsAdapter(
                             if (position == i) {
                                 Log.v("I","dentro if ${i}")
                                 holder.txtName?.setText(node1.child("nameItem").getValue().toString())
+                                holder.txtDescription?.setText(node1.child("description").getValue().toString())
+                                holder.txtPrice?.setText(node1.child("price").getValue().toString())
+                                holder.txtTipo?.setText(node1.child("tipoProducts").getValue().toString())
                             }
                             i += 1
                         }

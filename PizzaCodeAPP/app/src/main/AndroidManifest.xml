@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaCodeAPP">
-        <activity android:name=".AddProductsAdmin"></activity>
+
+        <activity android:name=".AddProductsAdmin"
+            android:parentActivityName=".MainAdminActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity android:name=".MainAdminActivity" />
         <activity android:name=".ResetPassActivity" />
         <activity android:name=".SignUpActivity" />

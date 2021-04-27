@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainAdminActivity">
+    tools:context=".MainAdminActivity"
+    android:background="@color/dark_purple">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAdmin"
