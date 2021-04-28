@@ -21,7 +21,12 @@ class ItensProductsAdapter(
                                description: String,
                                price: String,
                                nStock: String,
-                               tipoProducts: String)-> Unit
+                               tipoProducts: String)-> Unit,
+        private val longClickFun: (nameItem: String,
+                                   description: String,
+                                   price: String,
+                                   nStock: String,
+                                   tipoProducts: String) -> Unit
 
 ): RecyclerView.Adapter<ItensProductsAdapter.VH>(){
 
@@ -67,6 +72,21 @@ class ItensProductsAdapter(
         vh.itemView.setOnLongClickListener {
             Log.v("I", "LONGPRESSSING")
 
+            val produto = produtos[vh.adapterPosition]
+
+            reference!!.child("products/${produto}")
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        val nameItem = dataSnapshot.child("nameItem").value.toString()
+                        val description = dataSnapshot.child("description").value.toString()
+                        val price = dataSnapshot.child("price").value.toString()
+                        val nStock = dataSnapshot.child("nstock").value.toString()
+                        val tipoProducts = dataSnapshot.child("tipoProducts").value.toString()
+                        longClickFun( nameItem, description, price, nStock, tipoProducts)
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {}
+                })
             true
         }
 

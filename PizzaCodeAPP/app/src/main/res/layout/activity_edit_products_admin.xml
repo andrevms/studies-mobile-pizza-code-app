@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_purple"
-    tools:context=".AddProductsAdmin">
+    tools:context=".EditProductsAdminActivity">
 
     <Button
         android:id="@+id/button_add_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="@string/add_product"
+        android:text="Edit Product"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -30,8 +30,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/add_product_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/product_name" />
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -46,8 +45,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/add_product_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/description" />
+            android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -63,7 +61,6 @@
             android:id="@+id/add_product_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/price"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,7 +76,6 @@
             android:id="@+id/add_product_n_stock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/n_in_stock"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/adding_product"
+        android:text="Editing Product"
         android:textColor="@color/yellow_crayola"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,12 +95,12 @@
         android:id="@+id/imageView4"
         android:layout_width="222dp"
         android:layout_height="144dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_comida_e_restaurante" />
+        app:srcCompat="@drawable/ic_cortador_de_pizza" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lay"
@@ -119,7 +115,6 @@
             android:id="@+id/add_product_tipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tipo"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 

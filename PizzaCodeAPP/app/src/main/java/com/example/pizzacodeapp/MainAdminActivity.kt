@@ -48,11 +48,25 @@ class MainAdminActivity : AppCompatActivity() {
                 })
     }
 
-    fun onMessageItemClick( nameItem: String,
-                            description: String,
-                            price: String,
-                            nStock: String,
-                            tipoProducts: String){
+    private fun initEditActivityFromLongClickItem(nameItem: String,
+                                                  description: String,
+                                                  price: String,
+                                                  nStock: String,
+                                                  tipoProducts: String){
+        val intent = Intent(applicationContext, EditProductsAdminActivity::class.java)
+        intent.putExtra("nameItem", nameItem );
+        intent.putExtra("description", description );
+        intent.putExtra("price", price );
+        intent.putExtra("nStock", nStock );
+        intent.putExtra("tipoProducts", tipoProducts );
+        startActivity(intent)
+    }
+
+    private fun onMessageItemClick(nameItem: String,
+                                   description: String,
+                                   price: String,
+                                   nStock: String,
+                                   tipoProducts: String){
 
         val s = "Nome do Item ${nameItem}\n" +
                 "Descrição ${description}\n" +
@@ -65,7 +79,8 @@ class MainAdminActivity : AppCompatActivity() {
 
 
     private fun initRecyclerView() {
-        adapter = ItensProductsAdapter(products, ref, productsSize, this::onMessageItemClick)
+        adapter = ItensProductsAdapter(products, ref, productsSize, this::onMessageItemClick,
+        this::initEditActivityFromLongClickItem)
         recyclerVH?.adapter = adapter
         val layoutManager = LinearLayoutManager(this)
 
@@ -117,7 +132,6 @@ class MainAdminActivity : AppCompatActivity() {
         }else if(id == R.id.add_new_product){
             val intent = Intent(applicationContext, AddProductsAdmin::class.java)
             startActivity(intent)
-            finish()
         }else if(id == R.id.see_stock){
             //TODO
         }
