@@ -9,25 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaCodeAPP">
-        <activity android:name=".EditProductsAdminActivity"
-            android:parentActivityName=".MainAdminActivity"
-            android:label="Editing Products">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainAdminActivity" />
+        <activity android:name=".SacolaComprarActivity"
+            android:label="Sacola">
         </activity>
         <activity
-            android:label="Adding Products"
-            android:name=".AddProductsAdmin"
+            android:name=".EditProductsAdminActivity"
+            android:label="Editing Products"
             android:parentActivityName=".MainAdminActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainAdminActivity" />
         </activity>
-        <activity android:name=".MainAdminActivity"
-
-            android:label="Pizza Code App Admin"
-            />
+        <activity
+            android:name=".AddProductsAdmin"
+            android:label="Adding Products"
+            android:parentActivityName=".MainAdminActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainAdminActivity" />
+        </activity>
+        <activity
+            android:name=".MainAdminActivity"
+            android:label="Pizza Code App Admin" />
         <activity android:name=".ResetPassActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity" />

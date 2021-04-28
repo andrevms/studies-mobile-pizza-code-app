@@ -49,8 +49,6 @@ class ItensProductsAdapter(
         val vh = VH(v)
 
         vh.itemView.setOnClickListener{
-            Log.v("I", "${vh.adapterPosition}")
-            Log.v("I", "${produtos}")
 
             val produto = produtos[vh.adapterPosition]
 
@@ -70,7 +68,6 @@ class ItensProductsAdapter(
         }
 
         vh.itemView.setOnLongClickListener {
-            Log.v("I", "LONGPRESSSING")
 
             val produto = produtos[vh.adapterPosition]
 
@@ -94,15 +91,12 @@ class ItensProductsAdapter(
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        Log.v("I","INIT GET DATABASE")
         reference!!.child("products")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         var i = 0
                         for (node1 in dataSnapshot.children) {
-                            Log.v("I", node1.child("nameItem").getValue().toString())
                             if (position == i) {
-                                Log.v("I","dentro if ${i}")
                                 holder.txtName?.setText(node1.child("nameItem").getValue().toString())
                                 holder.txtDescription?.setText(node1.child("description").getValue().toString())
                                 holder.txtPrice?.setText(node1.child("price").getValue().toString())
@@ -117,7 +111,6 @@ class ItensProductsAdapter(
     }
 
     override fun getItemCount(): Int {
-        Log.v("I", "Produto tamanho data = ${productsSize}")
         return productsSize
     }
 }
