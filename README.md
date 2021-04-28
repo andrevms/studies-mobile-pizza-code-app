@@ -12,7 +12,7 @@ Projeto de conclusão da disciplina de desenvolvimento para dispositivos moveis
 
 - O produto cadastrado possuirá um nome, ~~imagem~~, descrição, tipo, quantidade no estoque,
 preços, ~~número do lote e validade~~; :heavy_check_mark:
-- O gerente deve possuir permissão para cadastrar :heavy_check_mark:, visualizar, editar e remover produtos.
+- O gerente deve possuir permissão para cadastrar , visualizar , editar e remover produtos.:heavy_check_mark:
 - Deve haver a funcionalidade de cadastrar cliente, inserindo os dados: nome completo,
 email, telefone, endereço, ~~username~~ e uma senha; :heavy_check_mark:
 - O cliente deve possuir permissão para realizar a compra apenas dos produtos que já estão
@@ -23,5 +23,5 @@ descrição e preço do produto antes de realizar a compra;
 preparado;
 - É desejável o envio de um e-mail com a compilação da compra para o cliente (ao finalizar
 a compra);
-- O estoque deve ser atualizado sempre que o dono do restaurante adicionar/ excluir
+- O estoque deve ser atualizado sempre que o dono do restaurante adicionar/ excluir :heavy_check_mark:
 produtos ou quando o cliente realizar uma compra.
