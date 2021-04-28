@@ -48,10 +48,24 @@ class MainAdminActivity : AppCompatActivity() {
                 })
     }
 
+    fun onMessageItemClick( nameItem: String,
+                            description: String,
+                            price: String,
+                            nStock: String,
+                            tipoProducts: String){
+
+        val s = "Nome do Item ${nameItem}\n" +
+                "Descrição ${description}\n" +
+                "Preço ${price}\n" +
+                "Número em stock ${nStock}\n" +
+                "Tipo Do Produto ${tipoProducts}\n"
+        Toast.makeText(this,s,Toast.LENGTH_LONG).show()
+    }
+
 
 
     private fun initRecyclerView() {
-        adapter = ItensProductsAdapter(products, ref, productsSize)
+        adapter = ItensProductsAdapter(products, ref, productsSize, this::onMessageItemClick)
         recyclerVH?.adapter = adapter
         val layoutManager = LinearLayoutManager(this)
 

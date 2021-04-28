@@ -16,8 +16,20 @@ import com.google.firebase.database.ValueEventListener
 class ItensProductsAdapter(
         private val produtos: List<String>,
         private val reference: DatabaseReference?,
-        private val productsSize: Int
+        private val productsSize: Int,
+        private val callback: (nameItem: String,
+                               description: String,
+                               price: String,
+                               nStock: String,
+                               tipoProducts: String)-> Unit
+
 ): RecyclerView.Adapter<ItensProductsAdapter.VH>(){
+
+    private var nameItem : String = ""
+    private var description : String = ""
+    private var price : String = ""
+    private var nStock : String = ""
+    private var tipoProducts : String = ""
 
     class VH(itemView: View): RecyclerView.ViewHolder(itemView){
         val txtName: TextView? = itemView.findViewById(R.id.txtTitle)
@@ -35,9 +47,29 @@ class ItensProductsAdapter(
             Log.v("I", "${vh.adapterPosition}")
             Log.v("I", "${produtos}")
 
-            //val produto = produtos[vh.adapterPosition]
-            //callback(produto)
+            val produto = produtos[vh.adapterPosition]
+
+            reference!!.child("products/${produto}")
+                    .addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            nameItem = dataSnapshot.child("nameItem").value.toString()
+                            description = dataSnapshot.child("description").value.toString()
+                            price = dataSnapshot.child("price").value.toString()
+                            nStock = dataSnapshot.child("nstock").value.toString()
+                            tipoProducts = dataSnapshot.child("tipoProducts").value.toString()
+                            callback( nameItem, description, price, nStock, tipoProducts )
+                        }
+
+                        override fun onCancelled(databaseError: DatabaseError) {}
+                    })
         }
+
+        vh.itemView.setOnLongClickListener {
+            Log.v("I", "LONGPRESSSING")
+
+            true
+        }
+
         return vh
     }
 
