@@ -16,9 +16,9 @@ preços, ~~número do lote e validade~~; :heavy_check_mark:
 - Deve haver a funcionalidade de cadastrar cliente, inserindo os dados: nome completo,
 email, telefone, endereço, ~~username~~ e uma senha; :heavy_check_mark:
 - O cliente deve possuir permissão para realizar a compra apenas dos produtos que já estão
-cadastrados no aplicativo e se encontram em estoque;
+cadastrados no aplicativo e se encontram em estoque; :heavy_check_mark:
 - Deve ser permitido ao cliente visualizar as características (nome do produto e imagem),
-descrição e preço do produto antes de realizar a compra;
+descrição e preço do produto antes de realizar a compra; :heavy_check_mark:
 - O cliente deve receber uma confirmação do restaurante de que seu pedido está sendo
 preparado;
 - É desejável o envio de um e-mail com a compilação da compra para o cliente (ao finalizar
