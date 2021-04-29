@@ -43,12 +43,38 @@ class SacolaComprarActivity : AppCompatActivity() {
         initRecyclerView()
     }
 
+    fun initSwipeDelete() {
+        val swipe = object : ItemTouchHelper.SimpleCallback(
+                0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+            ) = false
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val i = intent
+                i.putExtra("LIST", sacolaList as Serializable);
+                i.putExtra("INT", position)
+                setResult(Activity.RESULT_CANCELED, i)
+                finish()
+            }
+
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipe)
+        itemTouchHelper.attachToRecyclerView(recyclerVH)
+    }
+
     private fun initRecyclerView() {
         adapter = SacolaAdapter(sacolaList!!, ref, productsSize)
         recyclerVH?.adapter = adapter
         val layoutManager = LinearLayoutManager(this)
 
         recyclerVH?.layoutManager = layoutManager
+        initSwipeDelete()
 
     }
 

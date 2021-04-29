@@ -92,6 +92,12 @@ class   MainActivity : AppCompatActivity() {
 
         if (requestCode == 10 && resultCode == Activity.RESULT_CANCELED){
             val listaux = data?.getSerializableExtra("LIST") as MutableList<String>
+            val position = data?.getIntExtra("INT", -1)
+            if(position != -1){
+                listaux.removeAt(position)
+                Toast.makeText(this, "Item Removido da Sacola", Toast.LENGTH_LONG)
+                        .show()
+            }
             sacolaList = mutableListOf<String>()
             sacolaList.addAll(listaux)
         }
@@ -101,10 +107,6 @@ class   MainActivity : AppCompatActivity() {
                     .show()
         }
 
-        if(requestCode == 10 && resultCode == 0){
-            Toast.makeText(this, "Item Removido da lista", Toast.LENGTH_LONG)
-                    .show()
-        }
 
         if (requestCode == 10 && resultCode == Activity.RESULT_OK){
             sacolaList = mutableListOf<String>()
